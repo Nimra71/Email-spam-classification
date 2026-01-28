@@ -1,70 +1,3 @@
-# import pandas as pd
-# import numpy as np
-
-# # Load CSV safely on Windows
-# df = pd.read_csv(r"C:\Users\LAPTOPS HUB\Downloads\archive\spam.csv", encoding='latin-1')
-
-# # Keep only relevant columns
-# df = df[['v1', 'v2']]
-# df.columns = ['label', 'text']
-
-# # Convert label to numeric
-# df['label'] = df['label'].map({'ham': 0, 'spam': 1})
-
-# # Check data
-# print(df.head())
-# print("Dataset size:", df.shape)
-
-
-# import re
-# import nltk
-# from nltk.corpus import stopwords
-# from nltk.stem import PorterStemmer
-
-# nltk.download('stopwords')
-# stop_words = set(stopwords.words('english'))
-# stemmer = PorterStemmer()
-
-# def preprocess(text):
-#     text = text.lower()  # convert to lowercase
-#     text = re.sub(r'[^a-z\s]', '', text)  # remove punctuation & numbers
-#     words = text.split()  # split sentence into words
-#     words = [stemmer.stem(word) for word in words if word not in stop_words]
-#     return " ".join(words)
-
-# df['clean_text'] = df['text'].apply(preprocess)
-# df.head()
-
-# from sklearn.feature_extraction.text import TfidfVectorizer
-
-# vectorizer = TfidfVectorizer(max_features=3000, ngram_range=(1,2))
-# X = vectorizer.fit_transform(df['clean_text']).toarray()
-# y = df['label']
-
-# from sklearn.model_selection import train_test_split
-
-# X_train, X_test, y_train, y_test = train_test_split(
-#     X, y, test_size=0.2, random_state=42
-# )
-
-# from sklearn.naive_bayes import MultinomialNB
-
-# model = MultinomialNB()
-# model.fit(X_train, y_train)
-
-# y_pred = model.predict(X_test)
-
-# from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
-
-# print("Accuracy:", accuracy_score(y_test, y_pred))
-# print("Precision:", precision_score(y_test, y_pred))
-# print("Recall:", recall_score(y_test, y_pred))
-# print("F1 Score:", f1_score(y_test, y_pred))
-# print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
-
-
-
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -176,3 +109,4 @@ for name, clf in models.items():
     clf.fit(X_train, y_train)
     preds = clf.predict(X_test)
     print(name, "Accuracy:", accuracy_score(y_test, preds))
+
